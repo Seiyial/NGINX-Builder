@@ -4,26 +4,63 @@ Manage your NGINX servers like they were server code (because in many cases they
 
 ## Installation
 
-#### Installation
+1. [Create a new GitHub Repo](https://github.com/new) for your NGINX code.
 
+2.
 ```bash
-git clone https://github.com/Seiyial/nginx-builder.git
-cd nginx-setup
+# Your Computer
+git clone https://github.com/Seiyial/NGINX-Builder.git
+cd NGINX-Builder
 git remote remove origin
-git remote add origin https://github.com/you/your-nginx-repo
+git remote add origin https://github.com/you/your-new-nginx-repo
 git push -u origin master
 ```
 
-#### Get Started
-
-```bash
-git clone https://
-bin/download-src.sh 1.15.3 # nginx version
-# We do not check for validity, we just `curl`.
-```
+3. Add NGINX.
 
 [Available NGINX Versions](http://nginx.org/en/download.html)
 
-
 ```bash
-bin/unpack-src.sh 1.15.3
+bin/dl
+# or an older version
+bin/dl 1.14.0
+bin/dl 1.12.2
+# if a newer version comes out and I didnt update this script,
+bin/dl 1.16.1
+```
+
+Manual method:
+Go to http://nginx.org/en/download.html and download the file to `source-dl/nginx-1.xx.x.tar.gz`.
+Then `cd source-dl && tar -xzf nginx-1.xx.x.tar.gz && mv nginx-1.xx.x.tar.gz ../source`
+
+4. Adding Build Config
+Skip this step if this is foreign to you.
+
+##### Original Method:
+```bash
+cd source
+./configure --something --something-else --...
+```
+Issues:
+- easy to forget the config flags after not touching the NGINX server for months
+- got to use bash or zsh history or retype everything
+
+##### Now:
+```bash
+# Make sure your `source` folder is there already
+bin/config
+
+# Choose one!
+subl source/BUILDER_OPTS # Sublime Text
+code source/BUILDER_OPTS # VSCode
+vim source/BUILDER_OPTS # Vim
+atom source/BUILDER_OPTS # Atom
+```
+
+To add a config flag, add a new line with
+
+```
+--with-http_ssl_module # insert a SPACE at the end
+```
+
+and **make sure there is a space at the end of the line**.
