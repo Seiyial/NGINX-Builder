@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+LATEST=$(cat bin/saves/LATEST)
+if [ -z $1 ] then
+	VERSION=$LATEST
+else
+	VERSION=$1
+fi
+
+

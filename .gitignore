@@ -1,0 +1,4 @@
+# NGINX Builder Tool's Source Files
+# Do not commit source and source-dl (But will commit after actual users run install.sh)
+/source/*
+/source-dl/

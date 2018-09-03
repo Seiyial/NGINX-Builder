@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+tput setaf 202
+
+echo "
+    *** NGINX Builder ***"
+echo "    ⚡️ Configure $VERSION
+   "
+
+if [ -f source/BUILDER_OPTS ]
+then
+	CURRENT_CONFIG=$(cat source/BUILDER_OPTS)
+	cd source
+	./configure $CURRENT_CONFIG
+else
+	mkdir -p source && touch source/BUILDER_CONFIG_OPTS
+	echo "--prefix=/usr/local/nginx 
+--sbin-path=/usr/local/nginx/sbin/nginx 
+--modules-path=/usr/local/nginx/modules " > source/BUILDER_OPTS
+	printf "	source/BUILDER_OPTS created.\n	Confirm your configuration, then run this command again."
+fi
+

@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+tput setaf 202
+
+LATEST=$(cat bin/saves/LATEST)
+VERSION=$1
+if [ -z $1 ]
+then
+	VERSION=$LATEST
+fi
+
+echo "
+    *** NGINX Builder ***"
+echo "    ⚡️ Download Version $VERSION
+   "
+
+
+
+curl "http://nginx.org/download/nginx-$VERSION.tar.gz" \
+	--output source-dl/$VERSION.tar.gz --progress-bar && \
+	echo "
+    ⚡️ Extract Version $VERSION" && \
+	tar -xzf source-dl/$VERSION.tar.gz --directory source-dl && \
+	if [ -d ./source ]; then
+	   printf "\n   Download Complete! Run\n\n      bin/use $VERSION\n\n   to use it."
+	else
+		mv source-dl/nginx-$VERSION source
+	   echo "
+	Download Complete!
+	Copied nginx-$VERSION to /source/ folder."
+	fi
+	
+
+	
+
