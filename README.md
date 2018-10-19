@@ -1,5 +1,7 @@
 # NGINX Builder
 
+`Archived` for now because for most cases we can just `sudo apt install nginx-extras`. Plus this is only half complete.
+
 Manage your NGINX servers like they were server code (because in many cases they are). Have them version controlled with a one-command deploy. Read on to find out how.
 
 ## Installation
